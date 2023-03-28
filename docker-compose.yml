@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  local_ses:
+    container_name: local-ses
+    image: node:18.1.0
+    working_dir: /local_ses
+    ports:
+      - 8005:8005
+    volumes:
+      - ./docker/local_ses:/local_ses
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    command: >
+      bash -c "npm install &&
+      npm start"

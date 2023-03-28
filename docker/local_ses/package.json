@@ -1,0 +1,15 @@
+{
+  "name": "local_ses",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-ses-v2-local": "^2.1.1"
+  }
+}
