@@ -1,6 +1,17 @@
 version: "3.7"
 
 services:
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: "./docker/golang/Dockerfile"
+    ports:
+      - "8081:8081"
+    working_dir: /go/src/github.com/hiromu-saito/go-ses-sample
+    volumes:
+      - ./:/go/src/github.com/hiromu-saito/go-ses-sample
+    tty: true
   local_ses:
     container_name: local-ses
     image: node:18.1.0
@@ -9,8 +20,6 @@ services:
       - 8005:8005
     volumes:
       - ./docker/local_ses:/local_ses
-      - /etc/passwd:/etc/passwd:ro
-      - /etc/group:/etc/group:ro
     command: >
       bash -c "npm install &&
       npm start"
